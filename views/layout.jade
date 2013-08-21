@@ -1,7 +1,48 @@
-doctype 5
+!!! 5
 html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    link(rel='stylesheet', href='/stylesheets/chunkfive-fontface.css')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+    script(src='/javascripts/background.js')
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+    script(type='text/javascript', src='/javascripts/jquery.smint.js')
+    script(type='text/javascript')
+      $(document).ready( function() {
+      $('.subMenu').smint({
+      'scrollSpeed' : 1000
+      });
+      });
+  body(onload='setTimeout(function() { window.scrollTo(0, 1) }, 100);')
+    .wrap
+      .subMenu
+        .inner
+          a#sTop.subNavBtn(href='#') Home
+          a#s1.subNavBtn(href='#') Section 1
+          a#s2.subNavBtn(href='#') Section 2
+          a#s3.subNavBtn(href='#') Section 3
+          a#s4.subNavBtn(href='#') Section 4
+          a#s5.subNavBtn.end(href='#') Section 5
+      .section.sTop
+        .inner
+          h1 Welcome to the SMINT Demo page! 
+          p Click the links below to see it in action!
+        br.clear
+      .section.s1
+        .inner
+          h1 Section 1
+      .section.s2
+        .inner
+          h1 Section 2
+      .section.s3
+        .inner
+          h1 Section 3
+      .section.s4(data-type='background', data-speed='10')
+        .inner
+          h1 Section 4
+      .section.s5(data-type='background', data-speed='10')
+        .inner
+          h1 Section 5
+   
+
