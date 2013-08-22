@@ -1,0 +1,44 @@
+h1 #{post.subject}
+
+p #{post.body}
+
+p.tags
+  for tag in post.tags
+    strong 
+      a #{tag} 
+div.row
+  div.span6.offset6
+    - if (user)
+      a(href="/post/edit/#{post._id}") Edit 
+      a(href="/post/delete/#{post._id}") Delete
+    |  Posted by: #{post.author.username}
+    | Posted: #{moment(post.created).format('LLL')}
+  
+
+h3 User comments
+
+- if (post.comments.length)
+    for comment in post.comments
+        p
+          strong #{comment.body} 
+          em comment by #{comment.name} 
+          em posted #{moment(comment.created).fromNow()}
+- else
+    p No comments added yet, be first.
+    
+form(class="form-horizontal",name="add-comment",method="post",action="/post/comment")
+  fieldset
+    legend Add comment
+    
+    div.control-group
+      label.control-label Name
+      div.controls
+        input(type="text",name="name",class="input-xlarge span4")
+    div.control-group
+      label.control-label Comment
+      div.controls
+        textarea(name="comment",rows="6",cols="40",class="span4") 
+          
+    input(type="hidden",name="id",value="#{post._id}")
+    div.form-actions
+      input(type="submit",value="Comment",name="comment-btn",class="btn btn-primary")
