@@ -3,13 +3,19 @@
  * Module dependencies.
  */
 
-var express = require('express');
+var express = require('express')
+, db = require('mongojs').connect('blog', ['post', 'user']);
 var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var crypto = require('crypto');
 
 var app = express();
+
+var conf = {
+  salt: 'rdasSDAg'
+};
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -29,7 +35,7 @@ if ('development' == app.get('env')) {
 }
 
 // Connect to MongoDB
-db = require('mongojs').connect('blog', ['post']);
+// var db = require('mongojs').connect('blog', ['post']);
 //var db = mongojs('mydb', ['mycollection']);
 
 app.get('/', routes.index);
@@ -70,10 +76,21 @@ function isUser(req, res, next) {
 
 //MongoDB data strucutre
 app.get('/', function(req, res) {
-  var fields = { subject: 1, body: 1, tags: 1, created: 1, author: 1 };
-  db.post.find({ state: 'published'}, fields, function(err, posts) {
+  var fields = {
+    subject: 1, 
+    body: 1, 
+    tags: 1, 
+    created: 1, 
+    author: 1
+  };
+  db.post.find({
+    state: 'published'
+  }, fields, function(err, posts) {
     if (!err && posts) {
-      res.render('index.jade', { title: 'Blog list', postList: posts });
+      res.render('index.jade', {
+        title: 'Blog list', 
+        postList: posts
+      });
     }
   });
 });
@@ -83,7 +100,9 @@ app.get('/', function(req, res) {
 app.param('postid', function(req, res, next, id) {
   if (id.length != 24) return next(new Error('The post id is not having correct length'));
  
-  db.post.findOne({ _id: db.ObjectId(id) }, function(err, post) {
+  db.post.findOne({
+    _id: db.ObjectId(id)
+  }, function(err, post) {
     if (err) return next(new Error('Make sure you provided correct post id'));
     if (!post) return next(new Error('Post loading failed'));
     req.post = post;
@@ -101,13 +120,22 @@ app.get('/post/:postid', function(req, res) {
 // Add comment
 app.post('/post/comment', function(req, res) {
   var data = {
-      name: req.body.name
-    , body: req.body.comment
-    , created: new Date()
+    name: req.body.name
+    , 
+    body: req.body.comment
+    , 
+    created: new Date()
   };
-  db.post.update({ _id: db.ObjectId(req.body.id) }, {
-    $push: { comments: data }}, { safe: true }, function(err, field) {
-      res.redirect('/');
+  db.post.update({
+    _id: db.ObjectId(req.body.id)
+  }, {
+    $push: {
+      comments: data
+    }
+  }, {
+    safe: true
+  }, function(err, field) {
+    res.redirect('/');
   });
 });
 
@@ -121,8 +149,9 @@ app.get('/login', function(req, res) {
 
 app.post('/login', function(req, res) {
   var select = {
-      user: req.body.username
-    , pass: crypto.createHash('sha256').update(req.body.password + conf.salt).digest('hex')
+    user: req.body.username
+    , 
+    pass: crypto.createHash('sha256').update(req.body.password + conf.salt).digest('hex')
   };
  
   db.user.findOne(select, function(err, user) {
@@ -140,20 +169,29 @@ app.post('/login', function(req, res) {
 
 
 app.get('/post/add', isUser, function(req, res) {
-  res.render('add.jade', { title: 'Add new blog post '});
+  res.render('add.jade', {
+    title: 'Add new blog post '
+  });
 });
  
 app.post('/post/add', isUser, function(req, res) {
   var values = {
-      subject: req.body.subject
-    , body: req.body.body
-    , tags: req.body.tags.split(',')
-    , state: 'published'
-    , created: new Date()
-    , modified: new Date()
-    , comments: []
-    , author: {
-        username: req.session.user.user
+    subject: req.body.subject
+    , 
+    body: req.body.body
+    , 
+    tags: req.body.tags.split(',')
+    , 
+    state: 'published'
+    , 
+    created: new Date()
+    , 
+    modified: new Date()
+    , 
+    comments: []
+    , 
+    author: {
+      username: req.session.user.user
     }
   };
  
@@ -165,24 +203,35 @@ app.post('/post/add', isUser, function(req, res) {
 
 
 app.get('/post/edit/:postid', isUser, function(req, res) {
-res.render('edit.jade', { title: 'Edit post', blogPost: req.post } );
+  res.render('edit.jade', {
+    title: 'Edit post', 
+    blogPost: req.post
+  } );
 });
  
 app.post('/post/edit/:postid', isUser, function(req, res) {
-db.post.update({ _id: db.ObjectId(req.body.id) }, {
-$set: {
-subject: req.body.subject
-, body: req.body.body
-, tags: req.body.tags.split(',')
-, modified: new Date()
-}}, function(err, post) {
-res.redirect('/');
-});
+  db.post.update({
+    _id: db.ObjectId(req.body.id)
+  }, {
+    $set: {
+      subject: req.body.subject
+      , 
+      body: req.body.body
+      , 
+      tags: req.body.tags.split(',')
+      , 
+      modified: new Date()
+    }
+  }, function(err, post) {
+    res.redirect('/');
+  });
 });
 
 
 app.get('/post/delete/:postid', isUser, function(req, res) {
-  db.post.remove({ _id: db.ObjectId(req.params.postid) }, function(err, field) {
+  db.post.remove({
+    _id: db.ObjectId(req.params.postid)
+  }, function(err, field) {
     res.redirect('/');
   });
 });

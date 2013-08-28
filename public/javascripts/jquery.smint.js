@@ -21,7 +21,7 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 		$(this).addClass('smint')
 
 		var settings = $.extend({
-		            'scrollSpeed '  : 500
+		            'scrollSpeed '  : 700
 		}, options);
 
 		//Set the variables needed

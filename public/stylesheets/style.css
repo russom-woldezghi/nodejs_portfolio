@@ -1,7 +1,5 @@
 body {
   font: 95%/1.5 Helvetica, Arial, "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
-  text-align: center;
-  background: #4c535c;
   margin: 0 auto;
 }
 #wrapper {
@@ -13,7 +11,7 @@ body {
   padding: 20px;
 }
 #home {
-  background: url("/images/home.jpg") 50% 0 repeat fixed;
+  background: url("home-bg.jpg") 50% 0 repeat fixed;
   min-height: 1000px;
   height: 1000px;
   margin: 0 auto;
@@ -21,8 +19,15 @@ body {
   max-width: 1920px;
   position: relative;
 }
+#home.article {
+  height: 458px;
+  position: absolute;
+  text-align: center;
+  top: 150px;
+  width: 100%;
+}
 #about {
-  background: url("/images/about.jpg") 50% 0 no-repeat;
+  background: url("about-bg.jpg") 50% 0 repeat fixed;
   min-height: 1000px;
   height: 1000px;
   margin: 0 auto;
@@ -32,11 +37,12 @@ body {
   -webkit-box-shadow: 0 0 50px rgba(0,0,0,0.8);
   box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
-body {
-  font-family: Helvetica, Arial, Verdana, sans-serif;
-  color: #999;
-  font-size: 12px;
-  background: #bfbfbf;
+#about.article {
+  height: 458px;
+  position: absolute;
+  text-align: center;
+  top: 150px;
+  width: 100%;
 }
 h1,
 h2 {
@@ -71,57 +77,50 @@ p {
   left: 10px;
 }
 .active {
-  background: #3b5323;
+  background: #D3D3D3;
 }
 .clear {
   clear: both;
 }
 .wrap {
-/*backgroundurl(../images/bg.png) top left repeat-x*/
-  width: 100%;
-  max-width: 1140px;
-  min-width: 960px;
   z-index: 10;
   position: relative;
   margin: 0 auto;
   padding: 0;
 }
 .section {
-  width: 100%;
-  max-width: 1140px;
-  min-width: 960px;
-  z-index: 10;
-  position: relative;
-  margin: 0 auto;
-  padding: 0 0 20px 0;
+height: 600px;
+width: 100%;
+z-index: 10;
+position: relative;
+margin: 0 auto;
+padding: 0 0 20px 0;
 }
 .inner {
   width: 960px;
   margin: 0 auto;
   position: relative;
   min-height: 50px;
-  padding30px: 0;
   font-size: 18px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  padding30px: 0;
 }
 /* This is the selector i used for my menu, it needs to be set as positionabsolute */
 .subMenu {
+  border-top: 1px solid #CCC;
+  box-shadow: 0 5px 30px #585858;
   position: absolute;
   top: 462px;
   height: 50px;
   z-index: 1000;
   width: 100%;
-  max-width: 1140px;
-  min-width: 960px;
-  background: #aabd46;
+  background: #DDD;
 }
 .subMenu .inner {
-padding0
   font-weight: 400;
 }
 .subNavBtn {
+  font-family: Roboto;
   display: block;
   height: 35px;
   width: 12%;
@@ -129,9 +128,9 @@ padding0
   margin: 0px 0px 0 0;
   text-decoration: none;
   font-size: 14px;
-  padding: 15px 2% 0 2%;
+ 
   text-align: center;
-  color: #fff;
+  color: #575757;
 }
 .end {
   margin: 0;
