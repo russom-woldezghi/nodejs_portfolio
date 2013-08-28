@@ -17,12 +17,12 @@ html
     .wrap
       .subMenu
         .inner
-          a#sTop.subNavBtn(href='#') Home
-          a#s1.subNavBtn(href='#') Section 1
-          a#s2.subNavBtn(href='#') Section 2
-          a#s3.subNavBtn(href='#') Section 3
-          a#s4.subNavBtn(href='#') Section 4
-          a#s5.subNavBtn.end(href='#') Section 5
+          
+          a#sTop.subNavBtn(href='#') About
+          a#s1.subNavBtn(href='#') Resume
+          a#s2.subNavBtn(href='#') Portfolio
+          a#s3.subNavBtn.end(href='#') Contact
+          
       .section.sTop
         .inner
          h3= title
@@ -30,15 +30,15 @@ html
         br.clear
       .section.s1
         .inner
-          h1 Section 1
+          h1 Resume
       .section.s2
         .inner
-          h1 Section 2
+          h1 Portfolio
       .section.s3
         .inner
-          h1 Section 3
+          h1 Contact
           a(class="brand",href="/") New era Blog
-          div.nav-collapse
+          
             ul.nav
               li.active
                 a(href="/") Home
@@ -53,11 +53,3 @@ html
                   a(href="/logout") #{user.user}
               - else
                 a(href="/login") Login user
-
-
-      .section.s4
-        .inner
-          h1 Section 4
-      .section.s5
-        .inner
-          h1 Section 5
