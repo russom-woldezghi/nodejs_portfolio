@@ -44,8 +44,7 @@ body {
   top: 150px;
   width: 100%;
 }
-h1,
-h2 {
+h1 h2 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   margin0: 0 15px 0;
@@ -77,7 +76,7 @@ p {
   left: 10px;
 }
 .active {
-  background: #D3D3D3;
+  background: #d3d3d3;
 }
 .clear {
   clear: both;
@@ -89,12 +88,12 @@ p {
   padding: 0;
 }
 .section {
-height: 900px;
-width: 100%;
-z-index: 10;
-position: relative;
-margin: 0 auto;
-padding: 0 0 20px 0;
+  height: 900px;
+  width: 100%;
+  z-index: 10;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 0 20px 0;
 }
 .inner {
   width: 960px;
@@ -105,16 +104,15 @@ padding: 0 0 20px 0;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
 }
-/* This is the selector i used for my menu, it needs to be set as positionabsolute */
 .subMenu {
-  border-top: 1px solid #CCC;
+  border-top: 1px solid #ccc;
   box-shadow: 0 5px 30px #585858;
   position: absolute;
   top: 462px;
   height: 50px;
   z-index: 1000;
   width: 100%;
-  background: #DDD;
+  background: #ddd;
 }
 .subMenu .inner {
   font-weight: 400;
@@ -135,7 +133,6 @@ padding: 0 0 20px 0;
 .end {
   margin: 0;
 }
-/* SECTIONS */
 .sTop {
   min-height: 630px;
   background: #e5e5e5;
@@ -143,8 +140,7 @@ padding: 0 0 20px 0;
 }
 .s1 {
   background: url("/images/about.jpg") 50% 0 no-repeat;
-}
-min-height 1000px {
+  min-height: 1000px;
   height: 1000px;
   margin: 0 auto;
   width: 100%;
@@ -155,8 +151,7 @@ min-height 1000px {
 }
 .s2 {
   background: url("/images/about.jpg") 50% 0 no-repeat;
-}
-min-height 1000px {
+  min-height: 1000px;
   height: 1000px;
   margin: 0 auto;
   width: 100%;
