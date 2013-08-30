@@ -26,30 +26,33 @@ html
       .section.sTop
         .inner
          h3= title
-          div Welcome to my blog, think and comment here what you think.
+          p I build websites and applications, of sorts.
         br.clear
       .section.s1
         .inner
-          h1 Resume
+          section#home.pages(data-type='background', data-speed='10')
+            h1 Resume
       .section.s2
         .inner
-          h1 Portfolio
+          section#home.pages(data-type='background', data-speed='7')
+            h1 Portfolio
       .section.s3
         .inner
-          h1 Contact
-          a(class="brand",href="/") New era Blog
-          
-            ul.nav
-              li.active
-                a(href="/") Home
-              - if (user)
-                li
-                  a(href="/post/add") Add post
-              li
-                a(href="#") Contact
-            p.navbar-text.pull-right
-              - if (user)
-                  span Logged in as 
-                  a(href="/logout") #{user.user}
-              - else
-                a(href="/login") Login user
+          section#home.pages(data-type='background', data-speed='4')
+            h1 Contact
+              a(class="brand",href="/") New era Blog
+
+                ul.nav
+                  li.active
+                    a(href="/") Home
+                  - if (user)
+                    li
+                      a(href="/post/add") Add post
+                  li
+                    a(href="#") Contact
+                p.navbar-text.pull-right
+                  - if (user)
+                      span Logged in as 
+                      a(href="/logout") #{user.user}
+                  - else
+                    a(href="/login") Login user

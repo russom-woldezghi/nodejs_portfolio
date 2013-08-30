@@ -1,6 +1,7 @@
 body {
   font: 95%/1.5 Helvetica, Arial, "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
   margin: 0 auto;
+  background: #b9b9b9;
 }
 #wrapper {
   width: 920px;
@@ -27,7 +28,6 @@ body {
   width: 100%;
 }
 #about {
-  background: url("about-bg.jpg") 50% 0 repeat fixed;
   min-height: 1000px;
   height: 1000px;
   margin: 0 auto;
@@ -92,8 +92,7 @@ p {
   width: 100%;
   z-index: 10;
   position: relative;
-  margin: 0 auto;
-  padding: 0 0 20px 0;
+  background: #bdbdbd;
 }
 .inner {
   width: 960px;
@@ -103,6 +102,9 @@ p {
   font-size: 18px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
+}
+.inner h1 {
+  padding-top: 20px;
 }
 .subMenu {
   border-top: 1px solid #ccc;
@@ -116,13 +118,14 @@ p {
 }
 .subMenu .inner {
   font-weight: 400;
+  width: 730px;
 }
 .subNavBtn {
   padding: 15px 2% 0 2%;
   font-family: Roboto;
   display: block;
   height: 35px;
-  width: 12%;
+  width: 150px;
   float: left;
   margin: 0px 0px 0 0;
   text-decoration: none;
@@ -139,30 +142,21 @@ p {
   color: #3d3d3d;
 }
 .s1 {
-  background: url("/images/about.jpg") 50% 0 no-repeat;
   min-height: 1000px;
   height: 1000px;
-  margin: 0 auto;
   width: 100%;
   max-width: 1920px;
   position: relative;
-  -webkit-box-shadow: 0 0 50px rgba(0,0,0,0.8);
-  box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
 .s2 {
-  background: url("/images/about.jpg") 50% 0 no-repeat;
   min-height: 1000px;
   height: 1000px;
-  margin: 0 auto;
   width: 100%;
   max-width: 1920px;
   position: relative;
-  -webkit-box-shadow: 0 0 50px rgba(0,0,0,0.8);
-  box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
 .s3 {
   min-height: 500px;
-  background: #504f4f;
 }
 .s4 {
   min-height: 500px;
