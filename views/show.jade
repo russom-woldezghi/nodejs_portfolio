@@ -9,10 +9,8 @@ p.tags
 div.row
   div.span6.offset6
     - if (user)
-      a(href="/post/edit/#{post._id}") Edit 
-      a(href="/post/delete/#{post._id}") Delete
-    |  Posted by: #{post.author.username}
-    | Posted: #{moment(post.created).format('LLL')}
+
+    
   
 
 h3 User comments
