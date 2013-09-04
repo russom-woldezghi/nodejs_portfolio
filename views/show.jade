@@ -12,7 +12,7 @@ div.row
       a(href="/post/edit/#{post._id}") Edit 
       a(href="/post/delete/#{post._id}") Delete
     |  Posted by: #{post.author.username}
-    | Posted: #{moment(post.created).format('LLL')}
+    
   
 
 h3 User comments
@@ -22,7 +22,7 @@ h3 User comments
         p
           strong #{comment.body} 
           em comment by #{comment.name} 
-          em posted #{moment(comment.created).fromNow()}
+         
 - else
     p No comments added yet, be first.
     

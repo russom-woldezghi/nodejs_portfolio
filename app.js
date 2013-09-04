@@ -4,19 +4,21 @@
  */
 
 var express = require('express')
-  , gzippo = require('gzippo')
   , routes = require('./routes')
+  //, gzippo = require('gzippo')
   , crypto = require('crypto')
   , moment = require('moment')
   , cluster = require('cluster')
   , os = require('os')
-  , db = require('mongojs').connect('blog', ['post', 'user']);
+  , db = require('mongojs').connect('blog', ['job', 'user']);
 
 var conf = {
   salt: 'rdasSDAg'
 };
 
-var app = module.exports = express.createServer();
+ var express = require("express");
+ var app = express();
+
 
 // Configuration
 
@@ -28,7 +30,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'wasdsafeAD' }));
-  app.use(gzippo.staticGzip(__dirname + '/public'));
+  //app.use(gzippo.staticGzip(__dirname + '/public'));
   app.use(app.router);
   
 });
@@ -41,18 +43,18 @@ app.configure('production', function(){
   //app.use(express.errorHandler()); 
 });
 
-app.helpers({
-  moment: moment
-});
-
-app.dynamicHelpers({
-  user: function(req, res) {
-    return req.session.user;
-  },
-  flash: function(req, res) {
-    return req.flash();
-  }
-});
+//app.helpers({
+//  moment: moment
+//});
+//
+//app.dynamicHelpers({
+//  user: function(req, res) {
+//    return req.session.user;
+//  },
+//  flash: function(req, res) {
+//    return req.flash();
+//  }
+//});
 // Routes
 
 function isUser(req, res, next) {
@@ -63,29 +65,22 @@ function isUser(req, res, next) {
   }
 }
 
-app.error(function(err, req, res, next){
-  if (err instanceof NotFound) {
-    res.render('error/404.jade', { title: 'Not found 404' });
-  } else {
-    res.render('error/500.jade', { title: 'Error', error: err });
-  }
-});
 
 // Listing
 app.get('/', function(req, res) {
   var fields = { subject: 1, body: 1, tags: 1, created: 1, author: 1 };
-  db.post.find({ state: 'published'}, fields).sort({ created: -1}, function(err, posts) {
-    if (!err && posts) {
-      res.render('index.jade', { title: 'New era blog', postList: posts }); 
+  db.job.find({ state: 'published'}, fields).sort({ created: -1}, function(err, jobs) {
+    if (!err && jobs) {
+      res.render('index.jade', { title: 'Russom Woldezghi, Web Developer', jobList: jobs }); 
     }
   });
 });
 
-app.get('/post/add', isUser, function(req, res) {
-  res.render('add.jade', { title: 'Add new blog post '});
+app.get('/job/add', isUser, function(req, res) {
+  res.render('add.jade', { title: 'Add new job job '});
 });
 
-app.post('/post/add', isUser, function(req, res) {
+app.job('/job/add', isUser, function(req, res) {
   var values = {
       subject: req.body.subject
     , body: req.body.body
@@ -99,36 +94,36 @@ app.post('/post/add', isUser, function(req, res) {
     }
   };
 
-  db.post.insert(values, function(err, post) {
-    console.log(err, post);
+  db.job.insert(values, function(err, job) {
+    console.log(err, job);
     res.redirect('/');
   });
 });
-// Show post
+// Show job
 // Route param pre condition
-app.param('postid', function(req, res, next, id) {
-  if (id.length != 24) throw new NotFound('The post id is not having correct length');
+app.param('jobid', function(req, res, next, id) {
+  if (id.length != 24) throw new NotFound('The job id is not having correct length');
 
-  db.post.findOne({ _id: db.ObjectId(id) }, function(err, post) {
-    if (err) return next(new Error('Make sure you provided correct post id'));
-    if (!post) return next(new Error('Post loading failed'));
-    req.post = post;
+  db.jb.findOne({ _id: db.ObjectId(id) }, function(err, job) {
+    if (err) return next(new Error('Make sure you provided correct job id'));
+    if (!job) return next(new Error('Post loading failed'));
+    req.job = job;
     next();
   });
 });
 
-app.get('/post/edit/:postid', isUser, function(req, res) {
-  res.render('edit.jade', { title: 'Edit post', blogPost: req.post } );
+app.get('/job/edit/:jobid', isUser, function(req, res) {
+  res.render('edit.jade', { title: 'Edit job', blogPost: req.job } );
 });
 
-app.post('/post/edit/:postid', isUser, function(req, res) {
-  db.post.update({ _id: db.ObjectId(req.body.id) }, { 
+app.job('/job/edit/:jobid', isUser, function(req, res) {
+  db.job.update({ _id: db.ObjectId(req.body.id) }, { 
     $set: { 
         subject: req.body.subject
       , body: req.body.body
       , tags: req.body.tags.split(',')
       , modified: new Date()
-    }}, function(err, post) {
+    }}, function(err, job) {
       if (!err) {
         req.flash('info', 'Post has been sucessfully edited');
       }
@@ -136,8 +131,8 @@ app.post('/post/edit/:postid', isUser, function(req, res) {
     });
 });
 
-app.get('/post/delete/:postid', isUser, function(req, res) {
-  db.post.remove({ _id: db.ObjectId(req.params.postid) }, function(err, field) {
+app.get('/job/delete/:jobid', isUser, function(req, res) {
+  db.job.remove({ _id: db.ObjectId(req.params.jobid) }, function(err, field) {
     if (!err) {
       req.flash('error', 'Post has been deleted');
     } 
@@ -145,24 +140,24 @@ app.get('/post/delete/:postid', isUser, function(req, res) {
   });
 });
 
-app.get('/post/:postid', function(req, res) {
+app.get('/job/:jobid', function(req, res) {
   res.render('show.jade', { 
-    title: 'Showing post - ' + req.post.subject,
-    post: req.post 
+    title: 'Showing job - ' + req.job.subject,
+    job: req.job 
   });
 });
 
 // Add comment
-app.post('/post/comment', function(req, res) {
+app.job('/job/comment', function(req, res) {
   var data = {
       name: req.body.name
     , body: req.body.comment
     , created: new Date()
   };
-  db.post.update({ _id: db.ObjectId(req.body.id) }, {
+  db.job.update({ _id: db.ObjectId(req.body.id) }, {
     $push: { comments: data }}, { safe: true }, function(err, field) {
       if (!err) {
-        req.flash('success', 'Comment added to post');
+        req.flash('success', 'Comment added to job');
       }
       res.redirect('/'); 
   });
@@ -180,7 +175,7 @@ app.get('/logout', isUser, function(req, res) {
   res.redirect('/');
 });
 
-app.post('/login', function(req, res) {
+app.job('/login', function(req, res) {
   var select = {
       user: req.body.username
     , pass: crypto.createHash('sha256').update(req.body.password + conf.salt).digest('hex')
