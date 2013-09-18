@@ -1,4 +1,4 @@
-form(class="form-horizontal",name="add-post",method="post",action="/post/add")
+form(class="form-horizontal",name="add-post",method="post",action="/post/add" enctype="multipart/form-data")
   fieldset
     legend Add new blog post
 
@@ -11,6 +11,10 @@ form(class="form-horizontal",name="add-post",method="post",action="/post/add")
       label.control-label Content:
       div.controls
         textarea(name="body", rows="10", cols="30")
+
+    div.control-group
+      label.control-label Image:      
+        input(type='file', name='thumbnail')
  
     div.control-group
       label.control-label Tags:

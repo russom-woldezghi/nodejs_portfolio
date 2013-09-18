@@ -43,7 +43,7 @@ app.configure('development', function () {
 });
 
 app.configure('production', function () {
-    app.use(express.errorHandler()); 
+    app.use(express.errorHandler());
 });
 
 //app.helpers({
@@ -116,17 +116,45 @@ app.post('/post/add', isUser, function (req, res) {
         res.redirect('/');
     });
 });
+app.use(express.bodyParser({
+    uploadDir: './uploads'
+}));
+
+app.post('/file-upload', function (req, res, next) {
+    console.log(req.body);
+    console.log(req.files);
+});
+
+var fs = require('fs');
+app.post('/file-upload', function (req, res) {
+    // get the temporary location of the file
+    var tmp_path = req.files.thumbnail.path;
+    // set where the file should actually exists - in this case it is in the "images" directory
+    var target_path = '/files/images/' + req.files.thumbnail.name;
+    // move the file from the temporary location to the intended location
+    fs.rename(tmp_path, target_path, function (err) {
+        if (err) throw err;
+        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+        fs.unlink(tmp_path, function () {
+            if (err) throw err;
+            res.send('File uploaded to: ' + target_path + ' - ' + req.files.thumbnail.size + ' bytes');
+        });
+    });
+});
+
 // Show post
 // Route param pre condition
-app.param('postid', function(req, res, next, id) {
-  if (id.length != 24) throw new NotFound('The post id is not having correct length');
+app.param('postid', function (req, res, next, id) {
+    if (id.length != 24) throw new NotFound('The post id is not having correct length');
 
-  db.post.findOne({ _id: db.ObjectId(id) }, function(err, post) {
-    if (err) return next(new Error('Make sure you provided correct post id'));
-    if (!post) return next(new Error('Post loading failed'));
-    req.post = post;
-    next();
-  });
+    db.post.findOne({
+        _id: db.ObjectId(id)
+    }, function (err, post) {
+        if (err) return next(new Error('Make sure you provided correct post id'));
+        if (!post) return next(new Error('Post loading failed'));
+        req.post = post;
+        next();
+    });
 });
 
 app.get('/post/edit/:postid', isUser, function (req, res) {
@@ -227,15 +255,17 @@ app.post('/login', function (req, res) {
 });
 
 //The 404
-app.get('/*', function (req, res) {
-    throw new NotFound;
-});
-
-function NotFound(msg) {
-    this.name = 'NotFound';
-    Error.call(this, msg);
-    Error.captureStackTrace(this, arguments.callee);
-}
+ // Handle 404
+  app.use(function(req, res) {
+      res.status(400);
+     res.render('error/404.jade', {title: '404: File Not Found'});
+  });
+  
+  // Handle 500
+  app.use(function(error, req, res, next) {
+      res.status(500);
+     res.render('error/500.jade', {title:'500: Internal Server Error', error: error});
+  });
 
 /**
  * Adding the cluster support
