@@ -63,6 +63,7 @@ function isUser(req, res, next) {
     if (req.session.user) {
         next();
     } else {
+        res.redirect('/login');
         next(new Error('You must be user to access this page'));
     }
 }
@@ -178,7 +179,7 @@ app.post('/post/edit/:postid', isUser, function (req, res) {
         if (!err) {
             req.flash('info', 'Post has been sucessfully edited');
         }
-        res.redirect('/');
+        res.redirect('/post/edit/:postid');
     });
 });
 
