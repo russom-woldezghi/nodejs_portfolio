@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<title>Russom Woldezghi | Portfolio Website</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<meta name="description" content=" ... add description here ... " />
+	<meta name="keywords" content=" ... add keywords here ... " />
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	
+	<!-- //////// Favicon ////////  -->
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"  />
+	
+	<!-- //////// Css StyleSheets ////////  -->
+	<link href="_layout/style.css"       rel="stylesheet" type="text/css" media="all"   />
+	<link href="_layout/style-print.css" rel="stylesheet" type="text/css" media="print" />
+
+	<!-- //////// jQuery ////////  -->
+	<script src="_layout/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+	
+	<!-- //////// DD_belatedPNG - Png Fix for IE ////////  -->
+	<!--[if IE 6 ]>
+		<script type="text/javascript" src="_layout/js/DD_belatedPNG_0.0.7a-min.js"></script>
+		<script type="text/javascript">
+			DD_belatedPNG.fix('#header,#content,#footer');
+		</script>
+	<![endif]-->
+	
+	<!-- //////// Cufon Font Replacement ////////  -->
+	<script type="text/javascript" src="_layout/js/cufon/cufon-yui.js"></script>
+	<script type="text/javascript" src="_layout/js/cufon/hattori_hanzo.font.js"></script>
+
+	<!-- //////// Tipsy - custom Tooltips ////////  -->
+	<link rel="stylesheet" type="text/css" href="_layout/js/tipsy/css.tipsy.css" />
+	<script type="text/javascript" src="_layout/js/tipsy/jquery.tipsy.js"></script>
+
+	<!-- //////// PrettyPhoto ////////  -->
+	<link rel="stylesheet" type="text/css" href="_layout/js/prettyphoto/css.prettyPhoto.css" />
+	<script type="text/javascript" src="_layout/js/prettyphoto/jquery.prettyPhoto.js"></script>
+	
+	<!-- //////// Inset Border ////////  -->
+	<script type="text/javascript" src="_layout/js/insetbordereffect/jquery.insetBorderEffect.min.js"></script>
+	
+	<!-- //////// Customs JS  ////////  -->	
+	<script type="text/javascript">
+	/* <![CDATA[ */	                                         
+		$(document).ready(function(){
+		
+			// font replacement
+			if ( ! ( $.browser.msie & ($.browser.version == 6) ) )
+			{ 	
+				$("h1#name").css({'font-size':'46px', 'padding-top':'20px' , 'margin-bottom':'0px' });
+				Cufon.replace('#portfolio h2, h2.cv-section-name, h1#name, h2.title'); // using cufon with IE6 breaks the layout in some cases
+				
+			}	
+			
+			// tooltips
+			$('.tip').tipsy({gravity: 'e'});	//  apply class .tip to any <a> tag to make it's  title be displayed like a tooltip
+			
+			// lightbox
+			$("a[rel^='prettyPhoto']").prettyPhoto({
+				theme: 'light_square',
+				hideflash: false, 		// Hides all the flash object on a page, set to TRUE if flash appears over prettyPhoto
+				wmode: 'opaque', 		// Set the flash wmode attribute
+				autoplay: true, 		// Automatically start videos: True/False
+				modal: false 			// If set to true, only the close button will close the window
+			});
+			
+			// inset border of portofolio item imgs
+			$('#portfolio .portfolio-item img').insetBorder({
+			  inset : 10,
+			  borderColor : '#fff',
+			  speed : 250,
+			  borderType : 'solid'
+			});
+		
+		});
+	/* ]]> */			
+	</script> 
+	
+</head>
+<body>
+	
+	<noscript>
+		<link href="_layout/nojs.css" rel="stylesheet" type="text/css" media="all" />
+		<div id="nojs">JavaScript seems to be Disabled! This website works best with JavaScript enabled.</div>
+	</noscript>
+	
+	<div id="wrap">
+	
+		<div id="header">
+			
+			<div id="block-top"></div>
+			
+			<div id="personal-info" class="fixed">
+			
+				<a id="picture-of-you" href="_content/russom-large.png" title="Russom Woldezghi" rel="prettyPhoto">
+					<img src="_content/russom.png" width="100" height="100" alt="" />
+				</a>
+				
+				<h1 id="name">Russom Woldezghi</h1>
+				<h2 id="what-you-do">Web Developer / Technology Strategist</h2>
+				
+			</div><!-- end #personal-info -->
+					
+			<ul id="nav" class="fixed">
+				<li><a href="index.html">Resume</a></li>
+				<li>/</li>
+				<li><a href="portfolio.html" class="active">Portfolio</a></li>
+				<li>/</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul><!-- end #nav -->
+
+			<div class="divider"></div>
+			
+		</div><!-- end #header -->
+		
+		<div id="content" class="fixed">
+		<!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+
+			<h2 class="title">Portfolio</h2>	
+			<div id="portfolio">
+			
+				
+			
+				<div class="portfolio-item col-1 fixed">
+					
+					<div class="col-2 float-left padded-right">
+						
+						<a href="_content/freedom_house/main-large.png" class="bordered" rel="prettyPhoto[portfolio]">
+							<img src="_content/freedom_house/main-preview.png" width="456" height="211" alt="Freedom House Organization Website" />
+						</a>
+						
+					</div>
+					<div class="col-3 float-right">
+						
+						<br />
+							
+						<h2><a href="portfolio-freedom-house.html">Freedom House</a></h2>
+					
+						<p>Legacy data migration from varying sources to Drupal 7 platform, development of custom-maps, 
+						responsive themes and displays and CRM integration with Salsa Labs.</p>
+						
+						<p><a href="portfolio-freedom-house.html" class="read-more">Read More</a></p>
+						
+					</div>
+					
+				</div><!-- end .portfolio-item -->
+				<div class="portfolio-item col-1 fixed">
+					
+					<div class="col-2 float-left padded-right">
+						
+						<a href="_content/wjf/main-large.png" class="bordered" rel="prettyPhoto[portfolio]">
+							<img src="_content/wjf/main-preview.png" width="456" height="211" alt="World Justice Forum Website" />					
+						</a>
+											
+					</div>
+					<div class="col-3 float-right">
+						
+						<br />
+							
+						<h2><a href="portfolio-wjp-forum-iii.html">World Justice Forum III Website</a></h2>
+					
+						<p>
+						Custom theme built on Drupal 6 platform, custom written and extend modules to support agenda/speaker posting feature; 
+						API integration with conference registration website. 
+						</p>
+						
+						<p><a href="portfolio-wjp-forum-iii.html" class="read-more">Read More</a></p>
+						
+					</div>
+					
+				</div><!-- end .portfolio-item -->
+				<div class="portfolio-item col-1 fixed">
+					
+					<div class="col-2 float-left padded-right">
+						
+						<a href="_content/apac/main-large.png" class="bordered" rel="prettyPhoto[portfolio]">
+							<img src="_content/apac/main-preview.png" width="456" height="211" alt="Asia Pacific Rule of Law Conference" />
+						</a>
+						
+					</div>
+					<div class="col-3 float-right">
+						
+						<br />
+							
+						<h2><a href="portfolio-apac.html">Asia Pacific Rule of Law Conference</a></h2>
+					
+						<p>Custom theme development; user account development;  
+						custom theme development; private conference blog and collaboration tool for event organizers and partcipitants. 
+						</p>
+						
+						<p><a href="portfolio-apac.html" class="read-more">Read More</a></p>
+						
+					</div>
+					
+				</div><!-- end .portfolio-item -->
+				
+				<div class="col-1 portfolio-pagination fixed">
+				
+				<!-- Commentted out when pagination is needed				
+					<ul>
+						<li><a href="#">&laquo; Prev</a></li>
+						<li><a href="#" class="active">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">Next &raquo;</a></li>
+					</ul> 
+					-->
+					
+				</div><!-- end portfolio-pagination -->
+			
+			</div><!-- end #portfolio -->
+			
+		<!-- ////////////////////////////////////////////////////////////////////////////////////// -->	
+		</div><!-- end #content -->
+		
+		<div id="footer" class="fixed">
+			
+			<div class="divider2"></div>
+			
+			<p id="copyright">&copy; <script>document.write(new Date().getFullYear())</script> Russom Woldezghi. All rights reserved.</p>
+			<a href="#" id="top">&#710; Top</a>
+			
+		</div><!-- end #footer -->
+		
+	</div><!-- end #wrap -->
+	
+	<script type="text/javascript"> Cufon.now(); </script>
+
+	<!-- analytics code here -->
+
+</body>
+
+</html>

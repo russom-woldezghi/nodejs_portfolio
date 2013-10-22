@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<title>Russom Woldezghi | CV/Resume</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<meta name="description" content=" ... add description here ... " />
+	<meta name="keywords" content=" ... add keywords here ... " />
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	
+	<!-- //////// Favicon ////////  -->
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"  />
+	
+	<!-- //////// Css StyleSheets ////////  -->
+	<link href="_layout/style.css"       rel="stylesheet" type="text/css" media="all"   />
+	<link href="_layout/style-print.css" rel="stylesheet" type="text/css" media="print" />
+	
+	<!-- //////// jQuery ////////  -->
+	<script src="_layout/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+	
+	<!-- //////// DD_belatedPNG - Png Fix for IE ////////  -->
+	<!--[if IE 6 ]>
+		<script type="text/javascript" src="_layout/js/DD_belatedPNG_0.0.7a-min.js"></script>
+		<script type="text/javascript">
+			DD_belatedPNG.fix('#header,#content,#footer');
+		</script>
+	<![endif]-->
+	
+	<!-- //////// Cufon Font Replacement ////////  -->
+	<script type="text/javascript" src="_layout/js/cufon/cufon-yui.js"></script>
+	<script type="text/javascript" src="_layout/js/cufon/hattori_hanzo.font.js"></script>
+
+	<!-- //////// Tipsy - custom Tooltips ////////  -->
+	<link rel="stylesheet" type="text/css" href="_layout/js/tipsy/css.tipsy.css" />
+	<script type="text/javascript" src="_layout/js/tipsy/jquery.tipsy.js"></script>
+
+	<!-- //////// PrettyPhoto ////////  -->
+	<link rel="stylesheet" type="text/css" href="_layout/js/prettyphoto/css.prettyPhoto.css" />
+	<script type="text/javascript" src="_layout/js/prettyphoto/jquery.prettyPhoto.js"></script>
+	
+	<!-- //////// Customs JS  ////////  -->	
+	<script type="text/javascript">
+	/* <![CDATA[ */	                                         
+		$(document).ready(function(){
+		
+			// font replacement
+			if ( ! ( $.browser.msie && ($.browser.version == 6) ) )
+			{ 	
+				$("h1#name").css({'font-size':'46px', 'padding-top':'20px' , 'margin-bottom':'0px' });
+				Cufon.replace('#portfolio h2, h2.cv-section-name, h1#name'); // using cufon with IE6 breaks the layout in some cases
+				
+			}	
+			
+			// tooltips
+			$('.tip').tipsy({gravity: 'e'});	//  apply class .tip to any <a> tag to make it's  title be displayed like a tooltip
+			
+			// lightbox
+			$("a[rel^='prettyPhoto']").prettyPhoto({
+				theme: 'light_square',
+				hideflash: false, 		// Hides all the flash object on a page, set to TRUE if flash appears over prettyPhoto
+				wmode: 'opaque', 		// Set the flash wmode attribute
+				autoplay: true, 		// Automatically start videos: True/False
+				modal: false 			// If set to true, only the close button will close the window
+			});
+		
+		});
+	/* ]]> */			
+	</script> 
+	
+</head>
+<body>
+	
+	<noscript>
+		<link href="_layout/nojs.css" rel="stylesheet" type="text/css" media="all" />
+		<div id="nojs">JavaScript seems to be Disabled! This website works best with JavaScript enabled.</div>
+	</noscript>
+	
+	<div id="wrap">
+	
+		<div id="header">
+			
+			<div id="block-top"></div>
+			
+			<div id="personal-info" class="fixed">
+			
+				<a id="picture-of-you" href="_content/russom-large.png" title="Russom Woldezghi" rel="prettyPhoto">
+					<img src="_content/russom.png" width="100" height="100" alt="" />
+				</a>
+				
+				<h1 id="name">Russom Woldezghi</h1>
+				<h2 id="what-you-do">Web Developer / Technology Strategist</h2>
+				
+			</div><!-- end #personal-info -->
+					
+			<ul id="nav" class="fixed">
+				<li><a href="index.html" class="active">Resume</a></li>
+				<li>/</li>
+				<li><a href="portfolio.html">Portfolio</a></li>
+				<li>/</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul><!-- end #nav -->
+
+			<div class="divider"></div>
+			
+		</div><!-- end #header -->
+		
+		<div id="content" class="fixed">
+		<!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+
+			<div id="cv-1">
+			
+				<!-- // PERSONAL DETAILS     ////////////////////////////////////////////////////// -->
+				<div class="cv-section col-1 fixed">
+				
+					<h2 class="cv-section-name">Personal Details</h2>
+					
+					<ul class="cv-section-items">
+						
+						<li class="cv-item">
+							<span class="topic">Name:</span>         
+							Russom Woldezghi
+						</li>
+						<li class="cv-item">
+							<span class="topic">Location:</span>
+							Washington, DC
+						</li>
+						<li class="cv-item">
+							<span class="topic">Phone:</span>
+							303-915-6053
+						</li>
+						<li class="cv-item">
+							<span class="topic">Email:</span>
+							<a href="mailto:russom@russomwoldezghi.info">russom@russomwoldezghi.info</a>
+						</li>
+							
+					</ul><!-- end .cv-section-items -->
+
+				</div><!-- end .cv-section -->
+				
+				<!-- // PROFESIONAL PROFILE  ////////////////////////////////////////////////////// -->
+				<div class="cv-section col-1 fixed">
+				
+					<h2 class="cv-section-name">Profesional Profile</h2>
+					
+					<ul class="cv-section-items">
+					
+						<li class="cv-item">
+							<p>With over five years experience in project management and web development; Drupal and SharePoint development experience; 
+							Linux and Windows administration</p>
+							
+						</li>
+						
+					</ul><!-- end .cv-section-items -->
+
+				</div><!-- end .cv-section -->
+				
+				<!-- // WORK EXPERIENCE      ////////////////////////////////////////////////////// -->
+				<div class="cv-section col-1 fixed">
+				
+					<h2 class="cv-section-name">Work Experience</h2>
+					
+					<ul class="cv-section-items">
+					
+						<li class="cv-item">
+							<h4>Nov 2011 - Present</h4>
+							<h2>Web Developer</h2>
+							<h3>Freedom House, Washington, DC - Full-Time</h3>
+							<p>Create project plans and technical specs for Drupal and SharePoint sites. Lead governance teams, developers in developing websites and 
+							knowledge management solutions. Build internal applications for production workflow. Automated tasks via Powershell and VB.</p>
+							<ul>
+								<li>Experience in administering and configuring Linux and Windows environment</li>
+								<li>Developed PHP and ASP.NET based sites using Agile Scrum Method</li>
+								<li>Developed responsive sites for greater usability on different devices</li>
+							</ul> 
+						</li>
+						<li class="cv-item">
+							<h4>Apr 2010 - Nov 2011</h4>
+							<h2>IT Coordinator & Web Developer</h2>
+							<h3>The World Justice Project, Washington, DC - Full-Time</h3>
+							<p>Administered and configured Exchange mail server, Active Directory, SharePoint, VoIP phones systems; wrote custom PHP applications and 
+							PowerShell script for internal use. BESX administration and mobile end-user support. </p>
+							<ul>
+								<li>Designed and implemented Windows based network environment, VoIP phone systems with ISP's and consultants</li>
+								<li>Administered Exchange/Blackberry/SharePoint services; provided end-user support for 25 staffed organization</li>
+								<li>Developed organization Drupal-based website; wrote custom PHP/Drupal modules and applications for data publishing and sharing</li>
+								<li>Developed conference websites with custom written and extended modules</li>
+							</ul>
+						</li>
+						<li class="cv-item">
+							<h4>Jan 2010 - Jan 2011</h4>
+							<h2>IT Manager</h2>
+							<h3>LearnServe International, Washington, DC - Part-time</h3>
+							<p>Developed database features using Excel Formula and Macros. Produced print materials for annual report and pamphlets. Administered 
+							Google Apps services (Adwords, Analytics, Email, Google Sites); provided hardware and software support for staff and external partners.  </p>
+							<ul>
+								<li>Procured hardware and software for staff and external partners</li>
+								<li>Provided techincal specification (CMS and server configuration) for based Wordpress website</li>
+								<li>Developed database solutions with spreadsheet formulas using Google Apps service </li>
+							</ul>
+						</li>
+						<li class="cv-item">
+							<h4>Jan 2010 - May 2010</h4>
+							<h2>Web Developer</h2>
+							<h3>Immigration Reform Law Institute, Washington, DC - Contract</h3>
+							<p>Developed Drupal based website for organization information and blog site, with custom written and extended modules; 
+							wrote scripts for automated tasks.</p>
+							<ul>
+								<li>Lead techincal project for website development</li>
+								<li>Mocked-up PSD templates for website template</li>
+								<li>Configured CentOS server for website hosting</li>
+							</ul>
+						</li>
+						<li class="cv-item">
+							<h4>Feb 2008 - Oct 2009</h4>
+							<h2>IT Coordinator</h2>
+							<h3>Environmental Leadership Program, Washington, DC - Full-time</h3>
+							<p>Administered Windows-based services: file-server, email, Active Directory; contact management software; FileMaker database. 
+							Developed Drupal based website and blog. Produced print materials using Adobe CS products.</p>
+							<ul>
+								<li>Maintained network structure of 15 person staff</li>
+								<li>Designed print materials for conferences, user manuals, annual report using Adobe CS print design software</li>
+								<li>Maintained IT budget</li>
+							</ul>
+						</li>						
+					</ul><!-- end .cv-section-items -->
+				
+				</div><!-- end .cv-section -->
+			
+				<!-- // TECHNICAL SKILLS     ////////////////////////////////////////////////////// -->
+				<div class="cv-section col-1 fixed">
+				
+					<h2 class="cv-section-name"> Technical Skills</h2>
+					
+					<ul class="cv-section-items">
+						
+						<li class="cv-item"> 
+							<span class="topic">Front-end Design</span>        
+							<span class="level l-6">Extensive skillset</span>    
+							Xhtml, Css 3.0, Javascript jQuery Framework
+						</li>
+						<li class="cv-item"> 
+							<span class="topic">Back-end Development</span>         
+							<span class="level l-7">Extensive skillset</span> 
+							CodeIgniter web application framework, MySql Databases
+						</li>
+						<li class="cv-item"> 
+							<span class="topic">Adobe Photoshop</span>
+							<span class="level l-5">Moderate skillset</span>
+							Produce layouts for web and print
+						</li>
+						<li class="cv-item">
+							<span class="topic">Adobe Indesign</span>
+							<span class="level l-3">Minimal skillset</span>
+							DTP - Preparation for print
+						</li>
+						<li class="cv-item"> 
+							<span class="topic">Windows OS</span> 
+							<span class="level l-6">Extensive experience</span>  
+							Excelent platform knowledge and administrative capabilities
+						</li>
+						<li class="cv-item"> 
+							<span class="topic">Microsoft Office Suite</span>
+							<span class="level l-5">Moderate experience</span> 
+							Edit documents in Word, Excel spreadsheets
+						</li>
+						
+					</ul><!-- end .cv-section-items -->
+	
+				</div><!-- end .cv-section -->
+				
+				<!-- // EDUCATION            ////////////////////////////////////////////////////// -->
+				<div class="cv-section last col-1 fixed">
+				
+					<h2 class="cv-section-name">Education</h2>
+					
+					<ul class="cv-section-items">
+					
+						<li class="cv-item">
+							<h4>2005 - 2009</h4>
+							<h2>The George Washington University</h2>
+							<h3>Bachelors of Arts in International Affairs</h3>
+							<p>Concentration in Conflict and Security from Elliott School of International Affairs</p>
+						</li>
+												
+					</ul><!-- end .cv-section-items -->
+				
+				</div><!-- end .cv-section -->
+
+			</div><!-- end #cv-1 -->	
+			
+		<!-- ////////////////////////////////////////////////////////////////////////////////////// -->	
+		</div><!-- end #content -->
+		
+		<div id="footer" class="fixed">
+			
+			<div class="divider2"></div>
+			
+			<p id="copyright">&copy; <script>document.write(new Date().getFullYear())</script> Russom Woldezghi. All rights reserved.</p>
+			<a href="#" id="top">&#710; Top</a>
+			
+		</div><!-- end #footer -->
+		
+		<a href="javascript:window.print()" id="print" title="Print CV" class="tip">Print CV</a>
+		<a href="#" id="download" title="Download CV" class="tip">Download CV</a>
+	
+	</div><!-- end #wrap -->
+	
+	<script type="text/javascript"> Cufon.now(); </script>
+
+	<!-- analytics code here -->
+
+</body>
+
+</html>

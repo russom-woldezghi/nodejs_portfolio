@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<title>Russom Woldezghi | Portfolio Website Detail APAC</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<meta name="description" content=" ... add description here ... " />
+	<meta name="keywords" content=" ... add keywords here ... " />
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	
+	<!-- //////// Favicon ////////  -->
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"  />
+	
+	<!-- //////// Css StyleSheets ////////  -->
+	<link href="_layout/style.css"       rel="stylesheet" type="text/css" media="all"   />
+	<link href="_layout/style-print.css" rel="stylesheet" type="text/css" media="print" />
+
+	<!-- //////// jQuery ////////  -->
+	<script src="_layout/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+	
+	<!-- //////// DD_belatedPNG - Png Fix for IE ////////  -->
+	<!--[if IE 6 ]>
+		<script type="text/javascript" src="_layout/js/DD_belatedPNG_0.0.7a-min.js"></script>
+		<script type="text/javascript">
+			DD_belatedPNG.fix('#header,#content,#footer');
+		</script>
+	<![endif]-->
+	
+	<!-- //////// Cufon Font Replacement ////////  -->
+	<script type="text/javascript" src="_layout/js/cufon/cufon-yui.js"></script>
+	<script type="text/javascript" src="_layout/js/cufon/hattori_hanzo.font.js"></script>
+
+	<!-- //////// Tipsy - custom Tooltips ////////  -->
+	<link rel="stylesheet" type="text/css" href="_layout/js/tipsy/css.tipsy.css" />
+	<script type="text/javascript" src="_layout/js/tipsy/jquery.tipsy.js"></script>
+
+	<!-- //////// PrettyPhoto ////////  -->
+	<link rel="stylesheet" type="text/css" href="_layout/js/prettyphoto/css.prettyPhoto.css" />
+	<script type="text/javascript" src="_layout/js/prettyphoto/jquery.prettyPhoto.js"></script>
+	
+	<!-- //////// Easy Slider ////////  -->
+	<script type="text/javascript" src="_layout/js/easyslider/jquery.easyslider.js"></script>
+	<link href="_layout/js/easyslider/css.easyslider.css" rel="stylesheet" type="text/css" />
+
+	<!-- //////// Customs JS  ////////  -->	
+	<script type="text/javascript">
+	/* <![CDATA[ */	                                         
+		$(document).ready(function(){
+		
+			// font replacement
+			if ( ! ( $.browser.msie & ($.browser.version == 6) ) )
+			{ 	
+				$("h1#name").css({'font-size':'46px', 'padding-top':'20px' , 'margin-bottom':'0px' });
+				Cufon.replace('#portfolio h2, h2.cv-section-name, h1#name, h2.title'); // using cufon with IE6 breaks the layout in some cases
+				
+			}	
+			
+			// tooltips
+			$('.tip').tipsy({gravity: 'e'});	//  apply class .tip to any <a> tag to make it's  title be displayed like a tooltip
+			
+			// lightbox
+			$("a[rel^='prettyPhoto']").prettyPhoto({
+				theme: 'light_square',
+				hideflash: false, 		// Hides all the flash object on a page, set to TRUE if flash appears over prettyPhoto
+				wmode: 'opaque', 		// Set the flash wmode attribute
+				autoplay: true, 		// Automatically start videos: True/False
+				modal: false 			// If set to true, only the close button will close the window
+			});
+			
+			// easy slider
+			$("#slide2").easySlider({
+				auto: true, 
+				continuous: true,
+				speed: 800,
+				controlsShow: true,
+				numeric: true,
+				numericId: 'controls'
+			});
+		
+		});
+	/* ]]> */			
+	</script> 
+	
+</head>
+<body>
+	
+	<noscript>
+		<link href="_layout/nojs.css" rel="stylesheet" type="text/css" media="all" />
+		<div id="nojs">JavaScript seems to be Disabled! This website works best with JavaScript enabled.</div>
+	</noscript>
+	
+	<div id="wrap">
+	
+		<div id="header">
+			
+			<div id="block-top"></div>
+			
+			<div id="personal-info" class="fixed">
+			
+				<a id="picture-of-you" href="_content/russom-large.png" title="Russom Woldezghi" rel="prettyPhoto">
+					<img src="_content/russom.png" width="100" height="100" alt="" />
+				</a>
+				
+				<h1 id="name">Russom Woldezghi</h1>
+				<h2 id="what-you-do">Web Developer / Technology Strategist</h2>
+				
+			</div><!-- end #personal-info -->
+					
+			<ul id="nav" class="fixed">
+				<li><a href="index.html">Resume</a></li>
+				<li>/</li>
+				<li><a href="portfolio.html" class="active">Portfolio</a></li>
+				<li>/</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul><!-- end #nav -->
+
+			<div class="divider"></div>
+			
+		</div><!-- end #header -->
+		
+		<div id="content" class="fixed">
+		<!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+
+			<h2 class="title">Portfolio</h2>	
+			<div id="portfolio">
+			
+				<div class="portfolio-item col-1 fixed">
+				
+						<div class="slider-wrap-2">
+							<div class="slider-2" id="slide2">
+								<ul>				
+									<li><img src="_content/apac/main.png" width="678" height="312" alt="Landing page" /></li>
+									<li><img src="_content/apac/about.png" width="678" height="312" alt="About us page" /></li>
+									<li><img src="_content/apac/page.png" width="678" height="312" alt="" /></li>
+									<li><img src="_content/apac/about.png" width="678" height="312" alt="" /></li>
+									<li><img src="_content/apac/about-apac.png" width="678" height="312" alt="" /></li>
+								</ul>
+							</div><!-- end .slider -->
+						</div><!-- end .slider-wrap -->	
+					
+				</div>
+				
+				<div class="portfolio-item col-1 fixed">
+					
+					<div class="col-2 float-left padded-right">
+						
+						<h2>Asia Pacific Rule of Law Conference</h2>
+						
+						<p>As part of the World Justice Project (WJP) Asia regional programmatic work the Asia Pacifice Rule of Law Conference was designed to gather 
+						members of the Asia Pacific legal community to convene and work on leading causes of human rights violations in the Asia Pacific.</p>
+
+						<p>Using the WordPress platform WJP was able to create an information driven conference website with agendas, speaker and travel information. Using
+						social media and Google Analyitics WJP staff were able to track and respond to site usage and traffic.</p> 
+						 					
+						<p>Conference participants were able to join private blog dicussions and collobrate on workshops in preperation of the regional conference. 
+						Using WordPress's core users account custom WordPress plugins were developed to allow sharing and communications of documents and pages to specific 
+						conference participants.</p>
+						 
+
+					</div>
+					<div class="col-3 float-left">
+												
+						<p><strong>Project Details:</strong></p>
+						
+						<ul>
+							<li>User accounts</li>
+							<li>Custom theme</li>
+							<li>Google Analytics and social media</li>
+							<li>Blog for participants and organizers</li>
+						</ul>
+						
+						<p><strong>Live preview:</strong>
+						   <br /><a 
+href="http://web.archive.org/web/20110624015249/http://www.apac2011wjp.org/">Internet Archive</a></p>			
+						
+					</div>
+					
+				</div><!-- end .portfolio-item -->
+			
+			</div><!-- end #portfolio -->	
+			
+		<!-- ////////////////////////////////////////////////////////////////////////////////////// -->	
+		</div><!-- end #content -->
+		
+		<div id="footer" class="fixed">
+			
+			<div class="divider2"></div>
+			
+			<p id="copyright">&copy; <script>document.write(new Date().getFullYear())</script> Russom Woldezghi. All rights reserved.</p>
+			<a href="#" id="top">&#710; Top</a>
+			
+		</div><!-- end #footer -->
+		
+	</div><!-- end #wrap -->
+	
+	<script type="text/javascript"> Cufon.now(); </script>
+
+	<!-- analytics code here -->
+
+</body>
+
+</html>
