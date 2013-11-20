@@ -3,8 +3,8 @@
  */
 
 var express = require('express'),
-    routes = require('./routes')
-    , gzippo = require('gzippo')
+    routes = require('./routes'),
+    gzippo = require('gzippo')
     crypto = require('crypto'),
     moment = require('moment'),
     cluster = require('cluster'),
@@ -15,14 +15,23 @@ var conf = {
     salt: 'rdasSDAg'
 };
 
-var express = require("express");
+
 var app = express();
+
+var path = require('path');
+
+// all environments
+
+
+app.set('view engine', 'jade');
+app.use(express.favicon());
+app.use(require('stylus').middleware(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Configuration
 app.configure(function () {
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
+    
     app.use(express.logger());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
@@ -292,3 +301,5 @@ if (cluster.isMaster) {
     // Worker processes
     app.listen(3000);
 }
+
+
