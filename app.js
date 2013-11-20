@@ -30,7 +30,7 @@ app.configure(function () {
     app.use(express.session({
         secret: 'wasdsafeAD'
     }));
-    app.use(gzippo.staticGzip(__dirname + '/public'));
+    //app.use(gzippo.staticGzip(__dirname + '/public'));
     app.use(app.router);
 
 });
