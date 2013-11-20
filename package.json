@@ -3,13 +3,13 @@
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
-    "express": "3.0.0"
+    "express": "3.0.0beta4"
     , "derby": "*"
-    , "jade": ">= 0.0.1"
+    , "jade": "~0.27.2"
     , "mongojs": ">=0.3.2"
     , "stylus": "*"
     , "moment": "1.4.0"
     , "validator": "latest"
-    , "gzippo": "0.1.7"
+    , "gzippo": "~0.1.7"
   }
 }

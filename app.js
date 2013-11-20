@@ -4,7 +4,7 @@
 
 var express = require('express'),
     routes = require('./routes')
-    //, gzippo = require('gzippo')
+    , gzippo = require('gzippo')
     crypto = require('crypto'),
     moment = require('moment'),
     cluster = require('cluster'),
@@ -30,7 +30,7 @@ app.configure(function () {
     app.use(express.session({
         secret: 'wasdsafeAD'
     }));
-    //app.use(gzippo.staticGzip(__dirname + '/public'));
+    app.use(gzippo.staticGzip(__dirname + '/public'));
     app.use(app.router);
 
 });
@@ -117,31 +117,38 @@ app.post('/post/add', isUser, function (req, res) {
         res.redirect('/');
     });
 });
-app.use(express.bodyParser({
-    uploadDir: './uploads'
-}));
 
-app.post('/file-upload', function (req, res, next) {
-    console.log(req.body);
-    console.log(req.files);
-});
-
-var fs = require('fs');
-app.post('/file-upload', function (req, res) {
-    // get the temporary location of the file
-    var tmp_path = req.files.thumbnail.path;
-    // set where the file should actually exists - in this case it is in the "images" directory
-    var target_path = '/files/images/' + req.files.thumbnail.name;
-    // move the file from the temporary location to the intended location
-    fs.rename(tmp_path, target_path, function (err) {
-        if (err) throw err;
-        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
-        fs.unlink(tmp_path, function () {
-            if (err) throw err;
-            res.send('File uploaded to: ' + target_path + ' - ' + req.files.thumbnail.size + ' bytes');
-        });
+//Admin
+app.get('/admin', isUser, function (req, res) {
+    res.render('admin.jade', {
+        title: 'Administration'
     });
 });
+app.get('/admin', isUser, function (req, res) {
+
+    var fields = {
+        subject: 1,
+        body: 1,
+        tags: 1,
+        created: 1,
+        author: 1
+    };
+    db.post.find({
+        state: 'published'
+    }, fields).sort({
+        created: -1
+    }, function (err, posts) {
+        if (!err && posts) {
+            res.render('admin.jade', {
+                title: 'Russom Woldezghi, Web Developer'
+            });
+        }
+    });
+
+});
+
+
+
 
 // Show post
 // Route param pre condition
@@ -201,28 +208,28 @@ app.get('/post/:postid', function (req, res) {
     });
 });
 
-// Add comment
-app.post('/post/comment', function (req, res) {
-    var data = {
-        name: req.body.name,
-        body: req.body.comment,
-        created: new Date()
-    };
-    db.post.update({
-        _id: db.ObjectId(req.body.id)
-    }, {
-        $push: {
-            comments: data
-        }
-    }, {
-        safe: true
-    }, function (err, field) {
-        if (!err) {
-            req.flash('success', 'Comment added to post');
-        }
-        res.redirect('/');
-    });
-});
+//// Add comment
+//app.post('/post/comment', function (req, res) {
+//    var data = {
+//        name: req.body.name,
+//        body: req.body.comment,
+//        created: new Date()
+//    };
+//    db.post.update({
+//        _id: db.ObjectId(req.body.id)
+//    }, {
+//        $push: {
+//            comments: data
+//        }
+//    }, {
+//        safe: true
+//    }, function (err, field) {
+//        if (!err) {
+//            req.flash('success', 'Comment added to post');
+//        }
+//        res.redirect('/');
+//    });
+//});
 
 // Login
 app.get('/login', function (req, res) {
@@ -256,17 +263,22 @@ app.post('/login', function (req, res) {
 });
 
 //The 404
- // Handle 404
-  app.use(function(req, res) {
-      res.status(400);
-     res.render('error/404.jade', {title: '404: File Not Found'});
-  });
-  
-  // Handle 500
-  app.use(function(error, req, res, next) {
-      res.status(500);
-     res.render('error/500.jade', {title:'500: Internal Server Error', error: error});
-  });
+// Handle 404
+app.use(function (req, res) {
+    res.status(400);
+    res.render('error/404.jade', {
+        title: '404: File Not Found'
+    });
+});
+
+// Handle 500
+app.use(function (error, req, res, next) {
+    res.status(500);
+    res.render('error/500.jade', {
+        title: '500: Internal Server Error',
+        error: error
+    });
+});
 
 /**
  * Adding the cluster support
