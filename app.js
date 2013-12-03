@@ -8,6 +8,8 @@ var express = require('express'),
     crypto = require('crypto'),
     moment = require('moment'),
     cluster = require('cluster'),
+    app = express(),
+    path = require('path'),
     os = require('os'),
     db = require('mongojs').connect('blog', ['post', 'user']);
 
@@ -16,12 +18,9 @@ var conf = {
 };
 
 
-var app = express();
 
-var path = require('path');
 
 // all environments
-
 
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -31,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuration
 app.configure(function () {
-    
+
     app.use(express.logger());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
@@ -39,7 +38,6 @@ app.configure(function () {
     app.use(express.session({
         secret: 'wasdsafeAD'
     }));
-    //app.use(gzippo.staticGzip(__dirname + '/public'));
     app.use(app.router);
 
 });
@@ -301,5 +299,3 @@ if (cluster.isMaster) {
     // Worker processes
     app.listen(3000);
 }
-
-

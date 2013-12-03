@@ -2,7 +2,7 @@
 html
   head
     title= title
-    link(rel='stylesheet', href='stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
 
@@ -13,8 +13,15 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a(class="brand",href="/") New era Blog
-          div.nav-collapse
+          
+          
+
+
+    partial('alert', flash)
+    div.container!= body
+      hr
+      footer
+        div.nav-collapse
             ul.nav
               li.active
                 a(href="/") Home
@@ -29,10 +36,4 @@ html
                   a(href="/logout") #{user.user}
               - else
                 a(href="/login") Login user
-
-
-    partial('alert', flash)
-    div.container!= body
-      hr
-      footer
-        p Made by Risto Novik &copy; #{new Date().getFullYear()}
+        p Russom Woldezghi &copy; #{new Date().getFullYear()}
